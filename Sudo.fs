@@ -4,6 +4,7 @@
     let arrayOfArrays = [| [| 5;3;0;0;7;0;0;0;0|]; [|6;0;0;1;9;5;0;0;0|];[|0;9;8;0;0;0;0;6;0|];[|8;0;0;0;6;0;0;0;3|];[|4;0;0;8;0;3;0;0;1|];[|7;0;0;0;2;0;0;0;6|];[|0;6;0;0;0;0;2;8;0|];[|0;0;0;4;1;9;0;0;5|];[|0;0;0;0;8;0;0;7;9|]|]
     let Sudo = Array2D.init 9 9 (fun i j -> arrayOfArrays[i][j])
     let list = [1;2;3;4;5;6;7;8;9]
+    
     //let Possible =[]
     //ok
     let Add (listaOrig ) (objeto) = 
@@ -15,7 +16,7 @@
             let r = arr|>Array.toList
             Add(r) (number) 
             |>List.toArray
-
+//ok
     let arrayOfArrays_2 =
 
         let mutable array = []
@@ -28,19 +29,7 @@
             array<-(Add (array)(Column(j)|>Array.toList))
         
         array  
-  //ok
-    let Row(row : int, number :int)=
-        arrayOfArrays[row]
-        |> Array.contains(number)
 
-    let Column(column : int, number :int)=
-        arrayOfArrays_2[column]
-        |> List.contains(number)
-        //ok
-    let Box(row : int, number :int) =
-        if(row%3 =1) then Row(row-1,number) || (Row(row,number) || Row(row+1,number))  
-        elif(row%3 =2) then Row(row-2,number) || (Row(row-1,number) || Row(row,number))  
-        else Row(row,number) || (Row(row+1,number) || Row(row+2,number)) 
 //ok
     let mini3x3 (row:int, column:int) =
         let mutable mini3 = []
@@ -53,22 +42,40 @@
             mini3<- Add (mini3) (mini|>Array.toList)
             a <-a+1
         mini3
-//
+//ok
     let boxing = 
        let mutable box_3x3 = []
-       let a = [0;0;0;3;3;3;6;6;6]
-       let b = [0;3;6;0;3;6;0;3;6]
-       for i in 0..8 do
-            let b = Array2D.init 3 3 (fun i j ->mini3x3(a[i],b[i])
-            box_3x3 <- Add (box_3x3) (b[i][j])
+       let a = [|0;0;0;3;3;3;6;6;6|]
+       let b = [|0;3;6;0;3;6;0;3;6|]
+       for k in 0..8 do
+            box_3x3 <- Add (box_3x3) (mini3x3(a[k],b[k]))
        box_3x3
-            
+  //ok
+    let Row(row : int, number :int)=
+        arrayOfArrays[row]
+        |> Array.contains(number)
+    //ok
+    let Column(column : int, number :int)=
+        arrayOfArrays_2[column]
+        |> List.contains(number)
+      //ok  
+    let Box(row : int,column:int, number :int) =
+        let aux(box:list<list<int>>) (z:int)=
+            let mutable a = []
+            for i in 0..2 do
+                a <- a|>List.append([box[z][i]])
 
+            a
+        let boxs = boxing
+        let box = boxs[3*(row/3)+column%3]
+
+        aux box 0 |>List.contains(number) || aux box 1 |>List.contains(number)||aux box 2 |>List.contains(number)
+            
         //ok
     let possible_number (row:int, column:int)  =
         let lista = [1;2;3;4;5;6;7;8;9]
         lista
-        |>List.filter(fun x -> not(Row(row,x)||Column(column,x)||Box(row,x)))
+        |>List.filter(fun x -> not(Row(row,x)||Column(column,x)||Box(row,column,x)))
 
 
     
