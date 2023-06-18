@@ -6,7 +6,7 @@
     let list = [1;2;3;4;5;6;7;8;9]
     
     //let Possible =[]
-    //ok
+   
     let Add (listaOrig ) (objeto) = 
         let AddToBeginning (listaor) (objeto) = objeto::listaor
         let r = listaOrig |> List.rev 
@@ -16,7 +16,7 @@
             let r = arr|>Array.toList
             Add(r) (number) 
             |>List.toArray
-//ok
+
     let arrayOfArrays_2 =
 
         let mutable array = []
@@ -30,7 +30,6 @@
         
         array  
 
-//ok
     let mini3x3 (row:int, column:int) =
         let mutable mini3 = []
         let mutable a = row
@@ -42,7 +41,7 @@
             mini3<- Add (mini3) (mini|>Array.toList)
             a <-a+1
         mini3
-//ok
+
     let boxing = 
        let mutable box_3x3 = []
        let a = [|0;0;0;3;3;3;6;6;6|]
@@ -50,15 +49,15 @@
        for k in 0..8 do
             box_3x3 <- Add (box_3x3) (mini3x3(a[k],b[k]))
        box_3x3
-  //ok
+
     let Row(row : int, number :int)=
         arrayOfArrays[row]
         |> Array.contains(number)
-    //ok
+
     let Column(column : int, number :int)=
         arrayOfArrays_2[column]
         |> List.contains(number)
-      //ok  
+     
     let Box(row : int,column:int, number :int) =
         let aux(box:list<list<int>>) (z:int)=
             let mutable a = []
@@ -67,11 +66,10 @@
 
             a
         let boxs = boxing
-        let box = boxs[3*(row/3)+column%3]
+        let box = boxs[3*(row/3)+column/3]
 
         aux box 0 |>List.contains(number) || aux box 1 |>List.contains(number)||aux box 2 |>List.contains(number)
-            
-        //ok
+    
     let possible_number (row:int, column:int)  =
         let lista = [1;2;3;4;5;6;7;8;9]
         lista
@@ -95,8 +93,29 @@
 
             
         
+// para generar sudo ewcursivp sudo
+    
+    let Solve sudoku=
+        for i in 0..8 do
+            for j in 0..8 do
+                if(sudoku[i,j]<>0)
+                  sudoku()
 
-        
+
+
+
+
+    let posible (row:int, column:int)=
+        let pos = blabla()
+        let index(row:int,column:int) = 9*(row/9)+column/9
+        let Su = Sudo
+        let pos index = 
+            seq{
+                for i in 0..pos[index].Length-1 ->pos[index][i]
+            }
+        for i in 0..8 do
+            for j in 0..9 do
+               Solve(Su)        
 
                 
 

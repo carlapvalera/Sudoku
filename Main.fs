@@ -4,7 +4,7 @@ open System
 //let a = blabla()
 let main = 
     //let b =arrayOfArrays_2
-    let a = Box(3,0,7)
+    let a = blabla()
     Console.WriteLine(a)
     //for i in 0..2 do 
         //for j in 0..2 do
