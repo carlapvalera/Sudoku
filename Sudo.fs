@@ -1,4 +1,5 @@
 ﻿module Sudo
+    open System
 
     //type Box ={row : int; col : int; value: int}
 
@@ -83,9 +84,25 @@
 
 
         // para pacooooooooooooooooo
+    let Create_Sudoku =    // crear el sudoku
+        let list = [1;2;3;4;5;6;7;8;9]
+        let cero = 0
+        let mutable Sudoku = []
+        let mutable row= [||]
+        for j in 0..8 do
+            for i in 0..8 do
+                let random = new Random()
+                let a = random.Next(list.Length-1)
+                let b = random.Next(4)
+                let index = [0;0;1;1;1]
+                let pos =[|0;a|]
+                row<- add row pos[index[b]]
+            Sudoku<-Add Sudoku row
+        let Sudo =Array2D.init 9 9 (fun i j -> Sudoku[i][j])
+        Sudo
 
-    
-    let Is_Valid ( sudoku, row:int, column: int, x : int)=
+
+    let Is_Valid ( sudoku, row:int, column: int, x : int)=  // ver si un numero es valido en una determinada pos
         not(Row( sudoku,row,x)||Column(sudoku,column,x)||Box(sudoku,row,column,x))
 
 
