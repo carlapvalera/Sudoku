@@ -1,0 +1,43 @@
+﻿@page "/"
+@using System
+
+<h3>Sudoku</h3>
+
+<table>
+    @for (int i = 0; i < 9; i++)
+    {
+        <tr>
+            @for (int j = 0; j < 9; j++)
+            {
+                <td>
+                    <input type="number" min="1" max="9" @onchange="((args) => UpdateCellValue(i, j, args.Value))" />
+                </td>
+            }
+        </tr>
+    }
+</table>
+
+<button @onclick="ValidateSudoku">Validar Sudoku</button>
+
+<p>@validationResult</p>
+
+@code {
+    int[,] sudokuMatrix = new int[9, 9];
+    string validationResult = "";
+
+    void UpdateCellValue(int row, int column, string value)
+    {
+        if (int.TryParse(value, out int cellValue))
+        {
+            sudokuMatrix[row, column] = cellValue;
+        }
+    }
+
+    void ValidateSudoku()
+    {
+        // Aquí implementa tu lógica de validación del sudoku usando la matriz `sudokuMatrix`
+        // Puedes enviar la columna, fila y el valor a tu lógica utilizando los índices correspondientes.
+
+        validationResult = "Sudoku validado correctamente.";
+    }
+}
