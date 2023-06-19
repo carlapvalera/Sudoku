@@ -1,12 +1,6 @@
 ﻿module Sudo
     open Func
-    //type Box ={row : int; col : int; value: int}
-
-   // let arrayOfArrays = [| [| 5;3;0;0;7;0;0;0;0|]; [|6;0;0;1;9;5;0;0;0|];[|0;9;8;0;0;0;0;6;0|];[|8;0;0;0;6;0;0;0;3|];[|4;0;0;8;0;3;0;0;1|];[|7;0;0;0;2;0;0;0;6|];[|0;6;0;0;0;0;2;8;0|];[|0;0;0;4;1;9;0;0;5|];[|0;0;0;0;8;0;0;7;9|]|]
-   // let Sudo = Array2D.init 9 9 (fun i j -> arrayOfArrays[i][j])
-    //let list = [1;2;3;4;5;6;7;8;9]
     
-   
     let Add (listaOrig ) (objeto) = // agregar un elemento a uma lista
         let AddToBeginning (listaor) (objeto) = objeto::listaor
         let r = listaOrig |> List.rev 
@@ -70,13 +64,6 @@
         |>List.filter(fun x -> not(Row( sudoku,row,x)||Column(sudoku,column,x)||Box(sudoku,row,column,x)))
 
     
-
-
-
-        // para pacooooooooooooooooo
-    
-
-
     let Is_Valid ( sudo:Map<int*int,int>, row:int, column: int, x : int)=  // ver si un numero es valido en una determinada pos
         let mutable sudoku =  Array2D.zeroCreate 9 9
         let change =
