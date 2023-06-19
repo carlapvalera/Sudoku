@@ -1,0 +1,97 @@
+﻿@page "/"
+@using System
+
+<h3>Sudoku</h3>
+
+<style>
+    .error-cell {
+        background-color: red;
+    }
+</style>
+
+<button @onclick="ToggleCellColors">Cambiar colores</button>
+
+<table>
+    @for (int i = 0; i < 9; i++)
+    {
+        <tr>
+            @for (int j = 0; j < 9; j++)
+            {
+                int cellValue = sudokuMatrix[i, j];
+                bool isValid = Check(sudokuMatrix, cellValue, i, j);
+                if (i == 8 && j == 8) first = false;
+
+                <td>
+                    <input type="text" maxlength="1" value="@cellValue" class="@GetCellClass(isValid)" @oninput="((args) => UpdateCellValue(i, j, args.Value.ToString()))" />
+                </td>
+            }
+        </tr>
+    }
+</table>
+
+@code {
+    string validationResult = "";
+    int[,] sudokuMatrix = Start();
+    bool cellColorsOn = true;
+
+    int[,] HintMatrix; // Matriz inicial obtenida del método Start
+    bool first = true;
+
+    public void Sudoku()
+    {
+        sudokuMatrix = BackMain.Create_Sudoku(6);
+    }
+
+    static int[,] Start()
+    {
+        while (true)
+        {
+            var x = BackMain.Create_Sudoku(6);
+            if (x is not null) return x;
+        }
+    }
+
+    bool Check(int[,] matrix, int value, int row, int column)
+    {
+        if (first) return true;
+        return Sudo.Is_Valid(BackMain.convertirArrayAMap(matrix), row, column, value);
+    }
+
+    string GetCellClass(bool isValid)
+    {
+        if (first) return "";
+        if (cellColorsOn)
+        {
+            return isValid ? "" : "error-cell";
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+    void UpdateCellValue(int row, int column, string value)
+    {
+        if (row >= 0 && row < 9 && column >= 0 && column < 9)
+        {
+            if (int.TryParse(value, out int cellValue) && cellValue >= 1 && cellValue <= 9)
+            {
+                sudokuMatrix[row, column] = cellValue;
+            }
+            else
+            {
+                sudokuMatrix[row, column] = 0;
+            }
+        }
+    }
+
+    void ToggleCellColors()
+    {
+        cellColorsOn = !cellColorsOn;
+    }
+
+    void ValidateSudoku()
+    {
+
+    }
+}

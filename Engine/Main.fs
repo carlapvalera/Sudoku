@@ -1,8 +1,9 @@
-﻿open Sudo
+﻿module BackMain
+open Sudo
 open System
     
 
-    let Create_Sudoku =    // crear el sudoku
+    let Create_Sudoku(n:int) =    // crear el sudoku
         let list = [1;2;3;4;5;6;7;8;9]
         let cero = 0
         let mutable Sudoku = []
