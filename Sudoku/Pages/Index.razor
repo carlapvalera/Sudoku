@@ -1,0 +1,108 @@
+﻿@page "/"
+@using System
+@using BlazorApp.Sudo
+<h3>Sudoku</h3>
+
+<style>
+    .error-cell {
+        background-color: red;
+    }
+</style>
+
+
+<table>
+    @for (int i = 0; i < 9; i++)
+    {
+        <tr>
+            @for (int j = 0; j < 9; j++)
+            {
+                int cellValue = sudokuMatrix[i, j];
+                bool isValid = Check(sudokuMatrix, cellValue, i, j);
+
+                <td>
+                    <input type="text" maxlength="1" value="@cellValue" class="@GetCellClass(isValid)" @oninput="((args) => UpdateCellValue(i, j, args.Value.ToString()))" />
+                </td>
+            }
+        </tr>
+    }
+</table>
+
+<button @onclick="ValidateSudoku">Validar Sudoku</button>
+
+<p>@validationResult</p>
+
+@code {
+    int[,] sudokuMatrix = new int[9, 9];
+    int[,] startMatrix; // Matriz inicial obtenida del método Start
+    string validationResult = "";
+
+    public Sudoku()
+    {
+        // Llamar al método Start para obtener la matriz inicial
+        startMatrix = Start();
+
+        // Inicializar la matriz con los valores iniciales obtenidos
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                sudokuMatrix[i, j] = startMatrix[i, j];
+            }
+        }
+    }
+
+    int[,] Start()
+    {
+        // Aquí implementa tu lógica para obtener la matriz inicial desde el método Start
+        // Puedes retornar una matriz bidimensional de enteros con los valores iniciales
+
+        int[,] initialMatrix = new int[9, 9];
+
+        initialMatrix = Create_Sudoku
+
+        return initialMatrix;
+    }
+
+    bool Check(int[,] matrix, int value, int row, int column)
+    {
+        // Aquí implementa tu lógica para validar el valor ingresado en la celda
+        return true;
+    }
+
+    string GetCellClass(bool isValid)
+    {
+        return isValid ? "" : "error-cell";
+    }
+
+    void UpdateCellValue(int row, int column, string value)
+    {
+        if (row >= 0 && row < 9 && column >= 0 && column < 9)
+        {
+            if (int.TryParse(value, out int cellValue) && cellValue >= 1 && cellValue <= 9)
+            {
+                sudokuMatrix[row, column] = cellValue;
+            }
+            else
+            {
+                sudokuMatrix[row, column] = 0;
+            }
+        }
+    }
+
+    void ValidateSudoku()
+    {
+        // Aquí implementa tu lógica de validación del sudoku usando la matriz sudokuMatrix
+        // Puedes acceder a la matriz sudokuMatrix directamente aquí.
+
+        // Ejemplo: Imprimir los valores de la matriz
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                Console.WriteLine($"Fila: {i}, Columna: {j}, Valor: {sudokuMatrix[i, j]}");
+            }
+        }
+
+        validationResult = "Sudoku validado correctamente.";
+    }
+}

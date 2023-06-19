@@ -1,2 +1,3 @@
 ﻿module Func
-
+    open System
+    
