@@ -1,6 +1,5 @@
 ﻿module Sudo
-    open System
-
+    open Func
     //type Box ={row : int; col : int; value: int}
 
    // let arrayOfArrays = [| [| 5;3;0;0;7;0;0;0;0|]; [|6;0;0;1;9;5;0;0;0|];[|0;9;8;0;0;0;0;6;0|];[|8;0;0;0;6;0;0;0;3|];[|4;0;0;8;0;3;0;0;1|];[|7;0;0;0;2;0;0;0;6|];[|0;6;0;0;0;0;2;8;0|];[|0;0;0;4;1;9;0;0;5|];[|0;0;0;0;8;0;0;7;9|]|]
@@ -70,44 +69,24 @@
         lista
         |>List.filter(fun x -> not(Row( sudoku,row,x)||Column(sudoku,column,x)||Box(sudoku,row,column,x)))
 
-    let blabla(sudoku:int array2d) =  // la listan de numeros posibles d una pos determinada
-        let mutable lista =[]
-        let rec possible_number_positions(row:int, column:int)=
-            if(sudoku[row,column]=0) then lista <- Add lista (possible_number (sudoku,row,column))
-            elif (sudoku[row,column]<>0) then lista <- Add lista ([])
-            if(row <=8 && column<8)then possible_number_positions(row,column+1)
-            elif(column = 8 && row<8) then possible_number_positions(row+1,0)
-
-        possible_number_positions(0,0)
-        lista
+    
 
 
 
         // para pacooooooooooooooooo
-    let Create_Sudoku =    // crear el sudoku
-        let list = [1;2;3;4;5;6;7;8;9]
-        let cero = 0
-        let mutable Sudoku = [[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|]]
-        let mutable sudoku = Array2D.init 9 9 (fun i j -> Sudoku[i][j])
-        let mutable row= [||]
-        for j in 0..8 do
+    
+
+
+    let Is_Valid ( sudo:Map<int*int,int>, row:int, column: int, x : int)=  // ver si un numero es valido en una determinada pos
+        let mutable sudoku =  Array2D.zeroCreate 9 9
+        let change =
             for i in 0..8 do
-                let random = new Random()
-                let b = random.Next(4)
-                let index = [0;0;1;1;1]
-                let mutable listtt = []
-                if(b<>0 ||b<>1) then 
-                    listtt<- possible_number(sudoku,j,i)
-                let a_ = random.Next(listtt.Length-1)
-                let a = listtt[a_]
-                let pos =[|0;a|]
-                row<- add row pos[index[b]]
-            Sudoku<-Add Sudoku row
-        let Sudo =Array2D.init 9 9 (fun i j -> Sudoku[i][j])
-        Sudo
-
-
-    let Is_Valid ( sudoku, row:int, column: int, x : int)=  // ver si un numero es valido en una determinada pos
+                for j in 0..8 do
+                    if(Map.containsKey(i,j) sudo)then
+                        sudoku[i,j]<-Map.find(i,j) sudo
+                    else sudoku[i,j]<-0
+        
+        change
         not(Row( sudoku,row,x)||Column(sudoku,column,x)||Box(sudoku,row,column,x))
 
 
@@ -115,39 +94,22 @@
 
 // para generar sudo ewcursivp sudo
     
-    let rec Solve ( sudoku:int array2d, row:int, column:int, valid_pos)=
-        
-        let Valid (sudoku,valid_pos:list<list<int>>,row:int, column:int)=
-            let mutable list =[]
-            list<-valid_pos[9*(row/9)+column/9]
-            let mutable number = [||]
-            for i in 0..list.Length-1 do
-                if(Is_Valid(sudoku, row, column,list[i])) then number <- add number list[i]
-            number
-
-       
-        let valid_pos = blabla(sudoku)
-        let mutable solution = (false,sudoku)
-        let number = Valid(sudoku,valid_pos, row, column)
-        if(number.Length = 0) then solution<-(false,sudoku)
+    let rec solvePosition position sudoku =
+        let x,y = position/9, position%9
+        if position = 9*9 then
+            Some sudoku
+        else if Map.containsKey (x,y) sudoku then
+            solvePosition (position+1) sudoku
         else 
-            
-            if(row = 8 && column = 8) then solution<-(true, sudoku)
-            elif(row<8 && column = 8) then 
-                for i in 0..number.Length-1 do
-                    let mutable new_ = sudoku
-                    new_[row,column]<-number[i]
-                    solution <-Solve(new_, row+1,0,valid_pos)
+            let isValid n = Is_Valid(sudoku,x,y,n)
+            let solveCurrentCase n =
+                if isValid n then
+                    let newSudoku = Map.add (x, y) n sudoku
+                    solvePosition (position+1) newSudoku
+                else
+                       None
+            Array.tryPick solveCurrentCase [|1..9|]
 
-
-            elif( column<8) then
-                for i in 0..number.Length-1 do
-                    let mutable new_ = sudoku
-                    new_[row,column]<-number[i]
-                    solution <-Solve(new_, row , column+1,valid_pos)
-
-        solution
-        
             
       
 
