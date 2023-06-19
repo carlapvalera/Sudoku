@@ -19,7 +19,7 @@
             |>List.toArray
 
 
-    let mini3x3 (sudoku,row:int, column:int) = // crear un caja de 3x3 a partir de un sydoku y una pos
+    let mini3x3 (sudoku:int array2d,row:int, column:int) = // crear un caja de 3x3 a partir de un sydoku y una pos
         let mutable mini3 = []
         let mutable a = row
         let b_ = column
@@ -31,7 +31,7 @@
             a <-a+1
         mini3
 
-    let boxing (sudoku) = //crear la lista de todas las cajas de 3x3 del sudoku ( son 9)
+    let boxing (sudoku:int array2d) = //crear la lista de todas las cajas de 3x3 del sudoku ( son 9)
        let mutable box_3x3 = []
        let a = [|0;0;0;3;3;3;6;6;6|]
        let b = [|0;3;6;0;3;6;0;3;6|]
@@ -39,21 +39,21 @@
             box_3x3 <- Add (box_3x3) (mini3x3(sudoku,a[k],b[k]))
        box_3x3
 
-    let Row(sudoku ,row : int, number :int)= // comprobar si ese numero esta en la fila
+    let Row(sudoku:int array2d ,row : int, number :int)= // comprobar si ese numero esta en la fila
         let mutable row_ = [||] 
         for i in 0..8 do
             row_ <- add (row_) (sudoku[row,i])
         row_
         |> Array.contains(number)
 
-    let Column(sudoku ,column : int, number :int)= // comprobar si ese numero esta en la columna
+    let Column(sudoku :int array2d,column : int, number :int)= // comprobar si ese numero esta en la columna
         let mutable column_ = [||] 
         for i in 0..8 do
             column_ <- add (column_) (sudoku[i,column])
         column_
         |> Array.contains(number)
      
-    let Box(sudoku,row : int,column:int, number :int) =  // comprobar si ese numero esta en la caja de 3x3 correspondiente
+    let Box(sudoku:int array2d,row : int,column:int, number :int) =  // comprobar si ese numero esta en la caja de 3x3 correspondiente
         let aux(box:list<list<int>>) (z:int)=
             let mutable a = []
             for i in 0..2 do
@@ -65,12 +65,12 @@
 
         aux box 0 |>List.contains(number) || aux box 1 |>List.contains(number)||aux box 2 |>List.contains(number)
     
-    let possible_number (sudoku,row:int, column:int)  = // numeros posibles d una pos determinada
+    let possible_number (sudoku:int array2d,row:int, column:int)  = // numeros posibles d una pos determinada
         let lista = [1;2;3;4;5;6;7;8;9]
         lista
         |>List.filter(fun x -> not(Row( sudoku,row,x)||Column(sudoku,column,x)||Box(sudoku,row,column,x)))
 
-    let blabla(sudoku) =  // la listan de numeros posibles d una pos determinada
+    let blabla(sudoku:int array2d) =  // la listan de numeros posibles d una pos determinada
         let mutable lista =[]
         let rec possible_number_positions(row:int, column:int)=
             if(sudoku[row,column]=0) then lista <- Add lista (possible_number (sudoku,row,column))
@@ -87,14 +87,19 @@
     let Create_Sudoku =    // crear el sudoku
         let list = [1;2;3;4;5;6;7;8;9]
         let cero = 0
-        let mutable Sudoku = []
+        let mutable Sudoku = [[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|];[|0;0;0;0;0;0;0;0;0|]]
+        let mutable sudoku = Array2D.init 9 9 (fun i j -> Sudoku[i][j])
         let mutable row= [||]
         for j in 0..8 do
             for i in 0..8 do
                 let random = new Random()
-                let a = random.Next(list.Length-1)
                 let b = random.Next(4)
                 let index = [0;0;1;1;1]
+                let mutable listtt = []
+                if(b<>0 ||b<>1) then 
+                    listtt<- possible_number(sudoku,j,i)
+                let a_ = random.Next(listtt.Length-1)
+                let a = listtt[a_]
                 let pos =[|0;a|]
                 row<- add row pos[index[b]]
             Sudoku<-Add Sudoku row
@@ -110,7 +115,7 @@
 
 // para generar sudo ewcursivp sudo
     
-    let rec Solve ( sudoku, row:int, column:int, valid_pos)=
+    let rec Solve ( sudoku:int array2d, row:int, column:int, valid_pos)=
         
         let Valid (sudoku,valid_pos:list<list<int>>,row:int, column:int)=
             let mutable list =[]
@@ -132,14 +137,14 @@
                 for i in 0..number.Length-1 do
                     let mutable new_ = sudoku
                     new_[row,column]<-number[i]
-                    Solve(new_, row+1,0)
+                    solution <-Solve(new_, row+1,0,valid_pos)
 
 
             elif( column<8) then
                 for i in 0..number.Length-1 do
                     let mutable new_ = sudoku
-                    new_[row,colummn]<-number[i]
-                    Solve(new_, row , column+1)
+                    new_[row,column]<-number[i]
+                    solution <-Solve(new_, row , column+1,valid_pos)
 
         solution
         
