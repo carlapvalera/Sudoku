@@ -1,5 +1,4 @@
 ﻿open Sudo
-open Create
 open System
     
 
@@ -46,6 +45,36 @@ open System
         sudoku  
 
     let Create_Sudoku_3=
+        let generateRandom(n:int)=
+            let mutable temp = [|0;0;0;0;0;0;0;0;0|]
+            let random = new Random()
+            for i in 0..temp.Length-1 do
+                let mutable value = 0
+                do 
+                    value<-random.Next(1,10)
+                while (temp|>Array.contains(value)) do
+                    temp[i]<- value
+            temp
+
+        let Board =
+
+            let mutable map = Array2D.zeroCreate 9 9
+            map<- Paint (map, generateRandom(9),0,3)
+            map<- Paint (map, generateRandom(9),3,3)
+            map<- Paint (map, generateRandom(9),6,3)
+            map
+
+
+       // let Paint (mao:int array2d,rellenar:list<int>, start:int,dimension:int)=
+         //   let mutable k = 0
+           // let mutable mao = map
+            //let t = start+dimension
+            //for i in start..t do
+               // for j in start ..t do
+                 //   mao[i,j]<-rellenar[k+1]
+            //mao
+
+        
     let convertirArrayAMap (array: 'a [,]) =
         let mutable mapa = Map.empty
         for fila in 0 .. Array2D.length1 array - 1 do
@@ -57,13 +86,6 @@ open System
         mapa
 
 
-    let rec main = 
-        let mutable sudo = Create_Sudoku_2
-        let sudoku =convertirArrayAMap sudo
-        let sol =  solvePosition 0 sudoku
-        let solution = sol.Value
-        while(not(sol <> None))do
-            main
    
 
 
