@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {
+    "net7.0": {
       "FSharp.Core/7.0.400-beta.23281.1": {
         "type": "package",
         "compile": {
@@ -103,7 +103,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net8.0": [
+    "net7.0": [
       "FSharp.Core >= 7.0.400-beta.23281.1"
     ]
   },
@@ -113,9 +113,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\Engine\\backendSudo.fsproj",
-      "projectName": "backendSudo",
-      "projectPath": "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\Engine\\backendSudo.fsproj",
+      "projectUniqueName": "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\Engine\\Sudoku.fsproj",
+      "projectName": "Sudoku",
+      "projectPath": "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\Engine\\Sudoku.fsproj",
       "packagesPath": "C:\\Users\\paco2\\.nuget\\packages\\",
       "outputPath": "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\Engine\\obj\\",
       "projectStyle": "PackageReference",
@@ -124,7 +124,7 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net8.0"
+        "net7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -132,15 +132,15 @@
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "projectReferences": {}
         }
       }
     },
     "frameworks": {
-      "net8.0": {
-        "targetAlias": "net8.0",
+      "net7.0": {
+        "targetAlias": "net7.0",
         "dependencies": {
           "FSharp.Core": {
             "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
@@ -160,6 +160,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.5, 7.0.5]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.5, 7.0.5]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.5, 7.0.5]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.5, 7.0.5]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"

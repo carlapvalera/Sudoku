@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "tNbdv/+yZZK0VpO/v9zBJeYIKZbO2LbNwGZaNlUtqG1PNnBCgbBcUIXUufhjxNXVu3nzD9tdOm7qp8otarxLyQ==",
+  "dgSpecHash": "6w+DqFC6+2ciBkCzVJO/GfTviH/7Y2ulg2YKXrHO9m80TH94n/PCQ2yDVJYGcTDQ7qQlMO3nwIR4nvZ4GShfXg==",
   "success": true,
-  "projectFilePath": "d:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\Engine\\backendSudo.fsproj",
+  "projectFilePath": "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\Engine\\Sudoku.fsproj",
   "expectedPackageFiles": [
-    "C:\\Users\\paco2\\.nuget\\packages\\fsharp.core\\7.0.400-beta.23281.1\\fsharp.core.7.0.400-beta.23281.1.nupkg.sha512"
+    "C:\\Users\\paco2\\.nuget\\packages\\fsharp.core\\7.0.400-beta.23281.1\\fsharp.core.7.0.400-beta.23281.1.nupkg.sha512",
+    "C:\\Users\\paco2\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.5\\microsoft.netcore.app.ref.7.0.5.nupkg.sha512",
+    "C:\\Users\\paco2\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.5\\microsoft.windowsdesktop.app.ref.7.0.5.nupkg.sha512",
+    "C:\\Users\\paco2\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.5\\microsoft.aspnetcore.app.ref.7.0.5.nupkg.sha512",
+    "C:\\Users\\paco2\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.5\\microsoft.netcore.app.host.win-x64.7.0.5.nupkg.sha512"
   ],
   "logs": []
 }

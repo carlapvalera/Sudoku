@@ -1,97 +1,254 @@
 ﻿@page "/"
+
 @using System
+@using System.Collections.Generic
+@using System.Threading
 
 <h3>Sudoku</h3>
 
-<style>
-    .error-cell {
-        background-color: red;
-    }
-</style>
+@if (isSolved)
+{
+    <div class="alert alert-success">
+        El sudoku ha sido resuelto correctamente.
+    </div>
+}
 
-<button @onclick="ToggleCellColors">Cambiar colores</button>
-
-<table>
-    @for (int i = 0; i < 9; i++)
-    {
-        <tr>
-            @for (int j = 0; j < 9; j++)
+<div class="row">
+    <div class="col">
+        <h5>Opciones:</h5>
+        <select class="form-control" @onchange="OnSelectBoard">
+            @foreach (var boardOption in boardOptions)
             {
-                int cellValue = sudokuMatrix[i, j];
-                bool isValid = Check(sudokuMatrix, cellValue, i, j);
-                if (i == 8 && j == 8) first = false;
-
-                <td>
-                    <input type="text" maxlength="1" value="@cellValue" class="@GetCellClass(isValid)" @oninput="((args) => UpdateCellValue(i, j, args.Value.ToString()))" />
-                </td>
+                <option>@boardOption</option>
             }
-        </tr>
-    }
-</table>
+        </select>
+    </div>
+</div>
 
+<br />
+
+<div class="row">
+    <div class="col">
+        <h5>Tablero:</h5>
+        <table class="table table-bordered">
+            <tbody>
+                @for (int i = 0; i < 9; i++)
+                {
+                    <tr>
+                        @for (int j = 0; j < 9; j++)
+                        {
+                            <td style="background-color: @cellColors[i, j]">
+                                <input class="form-control" type="text" @bind="@board[i, j]" @oninput="() => OnCellChange(i, j)" />
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col">
+        <button class="btn btn-primary" @onclick="ShowHint">Mostrar pista</button>
+        <button class="btn btn-primary" @onclick="Solve">Solución</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h5>Pista:</h5>
+        <p>@hintMenssage</p>
+    </div>
+</div>
 @code {
-    string validationResult = "";
-    int[,] sudokuMatrix = Start();
-    bool cellColorsOn = true;
-
-    int[,] HintMatrix; // Matriz inicial obtenida del método Start
-    bool first = true;
-
-    public void Sudoku()
+    private List<string> boardOptions;
+    private string[,] board;
+    private string[,]solution;
+    private string[,] cellColors;
+    private bool isSolved;
+    private string selectedOption;
+    private string hintMenssage;
+    protected override void OnInitialized()
     {
-        sudokuMatrix = BackMain.Create_Sudoku(6);
+       
+        boardOptions = SelectBoard();
+        board = Start();
+        cellColors = new string[9, 9];
+        
     }
 
-    static int[,] Start()
+    private List<string> SelectBoard()
     {
-        while (true)
+        // Lógica para seleccionar las opciones del tablero
+        // Debes implementar este método según tus necesidades
+        return new List<string> { "Opción 1", "Opción 2", "Opción 3" };
+    }
+
+    private string[,] Start()
+    {
+         var x=new int[9,9];
+        if(selectedOption=="Opción 1")
         {
-            var x = BackMain.Create_Sudoku(6);
-            if (x is not null) return x;
+          do{
+
+               x= Main.Create_Sudoku_1<int[,]>(new int[9,9]);
+              solution=GetPlantilla(x);
+          } while(x is null);
+            
         }
-    }
-
-    bool Check(int[,] matrix, int value, int row, int column)
-    {
-        if (first) return true;
-        return Sudo.Is_Valid(BackMain.convertirArrayAMap(matrix), row, column, value);
-    }
-
-    string GetCellClass(bool isValid)
-    {
-        if (first) return "";
-        if (cellColorsOn)
+        else if(selectedOption=="Opción 2")
         {
-            return isValid ? "" : "error-cell";
+           do{
+
+            x= Main.Create_Sudoku_2<int[,]>(new int[9,9]);
+                solution=GetPlantilla(x);
+          } while(x is null);
+        }
+        else{
+            do{
+
+             x= Main.Create_Sudoku_3<int[,]>(new int[9,9]);
+                solution=GetPlantilla(x);
+          } while(x is null);
+        }
+        
+        return ConvertIntToString(x);
+    }
+
+    private string[,]GetPlantilla(int[,]x)
+    {
+        var y=Sudo.solvePosition(0,Main.convertirArrayAMap(x) );
+        if(y is null )return null;
+       return ConvertIntToString( Main.change( y.Value));
+    }
+    private string[,] ConvertIntToString(int[,]x)
+    {
+        var result=new string[9,9];
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                result[i,j]=x[i,j].ToString();
+            }
+        }
+        return result;
+    }
+
+    private int[,]ConvertStringToInt(string[,]x)
+    {
+         var result=new int[9,9];
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                result[i,j]=int.Parse(x[i,j]);
+            }
+        }
+        return result;
+    }
+
+    private bool TestValidPlay(int row, int col)
+    {
+        var bo=ConvertStringToInt(board);
+        return Sudo.Is_Valid(Main.convertirArrayAMap(bo),row,col,bo[row,col]);
+        
+    }
+
+    private string Hint(string[,] board)
+    {
+       var bo = ConvertStringToInt(board);
+       var s=SearchZero(bo);
+       if(s.Item1==-1) {return "No existen posiciones con 0";}
+       var t=Sudo.solvePosition(0,Main.convertirArrayAMap(bo));
+       if(t is null){return "No lleva a la solucion";}
+       var y=Main.change(t.Value);
+       var value=ConvertIntToString(y);
+       var fila=s.Item1+1;
+       var columna=s.Item2+1;
+
+        return "Puedes poner en la posición"+" "+ fila.ToString()+" "+columna.ToString()+" El valor: "+value[s.Item1,s.Item2];
+    }
+    
+    private (int,int)SearchZero(int[,]x)
+    {
+         for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                if(x[i,j]==0)return (i,j);
+            }
+        }
+        return (-1,-1);
+    }
+    private string[,] SolveMatrix()
+    {
+       var bo = ConvertStringToInt(board);
+       var t=Sudo.solvePosition(0,Main.convertirArrayAMap(bo));
+       if(t is null){return solution;}
+
+        return ConvertIntToString( Main.change(t.Value));
+    }
+
+    private void OnSelectBoard(ChangeEventArgs e)
+    {
+        selectedOption = e.Value.ToString();
+        OnInitialized();
+    }
+
+    private void OnCellChange(int row, int col)
+    {
+        if (!TestValidPlay(row, col))
+        {
+            cellColors[row, col] = "red";
         }
         else
         {
-            return "";
+            cellColors[row, col] = "blue";
         }
+
+        CheckCompletion();
     }
 
-    void UpdateCellValue(int row, int column, string value)
+    private void ShowHint()
     {
-        if (row >= 0 && row < 9 && column >= 0 && column < 9)
+        var hint = Hint(board);
+        hintMenssage=hint;
+       
+    }
+
+    private void Solve()
+    {
+        board = SolveMatrix();
+        isSolved = true;
+    }
+
+    private void CheckCompletion()
+    {
+        bool allBlue = true;
+
+        for (int i = 0; i < 9; i++)
         {
-            if (int.TryParse(value, out int cellValue) && cellValue >= 1 && cellValue <= 9)
+            for (int j = 0; j < 9; j++)
             {
-                sudokuMatrix[row, column] = cellValue;
+                if (cellColors[i, j] != "blue")
+                {
+                    allBlue = false;
+                    break;
+                }
             }
-            else
+
+            if (!allBlue)
             {
-                sudokuMatrix[row, column] = 0;
+                break;
             }
         }
-    }
 
-    void ToggleCellColors()
-    {
-        cellColorsOn = !cellColorsOn;
-    }
-
-    void ValidateSudoku()
-    {
-
+        if (allBlue)
+        {
+            isSolved = true;
+        }
     }
 }

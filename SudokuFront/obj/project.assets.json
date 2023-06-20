@@ -56,17 +56,17 @@
           }
         }
       },
-      "backendSudo/1.0.0": {
+      "Sudoku/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "FSharp.Core": "7.0.400-beta.23281.1"
         },
         "compile": {
-          "bin/placeholder/backendSudo.dll": {}
+          "bin/placeholder/Sudoku.dll": {}
         },
         "runtime": {
-          "bin/placeholder/backendSudo.dll": {}
+          "bin/placeholder/Sudoku.dll": {}
         }
       }
     }
@@ -114,15 +114,15 @@
         "lib/netstandard2.1/zh-Hant/FSharp.Core.resources.dll"
       ]
     },
-    "backendSudo/1.0.0": {
+    "Sudoku/1.0.0": {
       "type": "project",
-      "path": "../Engine/backendSudo.fsproj",
-      "msbuildProject": "../Engine/backendSudo.fsproj"
+      "path": "../Engine/Sudoku.fsproj",
+      "msbuildProject": "../Engine/Sudoku.fsproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "backendSudo >= 1.0.0"
+      "Sudoku >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -131,11 +131,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\SudokuFront\\SudokuFront.csproj",
+      "projectUniqueName": "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\SudokuFront\\SudokuFront.csproj",
       "projectName": "SudokuFront",
-      "projectPath": "d:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\SudokuFront\\SudokuFront.csproj",
+      "projectPath": "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\SudokuFront\\SudokuFront.csproj",
       "packagesPath": "C:\\Users\\paco2\\.nuget\\packages\\",
-      "outputPath": "d:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\SudokuFront\\obj\\",
+      "outputPath": "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\SudokuFront\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\paco2\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -152,8 +152,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "d:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\Engine\\backendSudo.fsproj": {
-              "projectPath": "d:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\Engine\\backendSudo.fsproj"
+            "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\Engine\\Sudoku.fsproj": {
+              "projectPath": "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\Engine\\Sudoku.fsproj"
             }
           }
         }

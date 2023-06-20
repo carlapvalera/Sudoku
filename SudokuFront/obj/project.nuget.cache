@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "comiJOp5uY2cF5b5OtZBYnjtnGmzeu+D984gjY8POpmTnmwsNCjACVA2/PVeXszsGx/y2azZtYt95MHOrRzklA==",
+  "dgSpecHash": "KCg+zNMAAxEnUOhOhCp9ufhXPqS3YrKgEBbXCTp/451FOPVID5kzNR6A3UeRt+IgQkYgl6LkIFkS2FkfjkIseQ==",
   "success": true,
-  "projectFilePath": "d:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\SudokuFront\\SudokuFront.csproj",
+  "projectFilePath": "D:\\Cibernetica 2021\\3ero\\Declarativa\\final\\Sudoku\\SudokuFront\\SudokuFront.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\paco2\\.nuget\\packages\\fsharp.core\\7.0.400-beta.23281.1\\fsharp.core.7.0.400-beta.23281.1.nupkg.sha512"
   ],

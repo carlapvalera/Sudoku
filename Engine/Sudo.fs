@@ -1,4 +1,4 @@
-﻿module Sudo
+﻿    module Sudo
     open Func
     
     let Add (listaOrig ) (objeto) = // agregar un elemento a uma lista
@@ -96,20 +96,4 @@
                 else
                        None
             Array.tryPick solveCurrentCase [|1..9|]
-
-            
-      
-
-                
-
-    
-   
-       
-
-
-        
-
-
-      
-
 

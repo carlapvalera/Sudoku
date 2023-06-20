@@ -1,0 +1,59 @@
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\Sudoku.exe
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\Sudoku.deps.json
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\Sudoku.runtimeconfig.json
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\Sudoku.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\Sudoku.pdb
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\FSharp.Core.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\cs\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\de\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\es\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\fr\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\it\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\ja\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\ko\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\pl\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\pt-BR\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\ru\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\tr\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\zh-Hans\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\bin\Debug\net7.0\zh-Hant\FSharp.Core.resources.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\obj\Debug\net7.0\Sudoku.fsproj.AssemblyReference.cache
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\obj\Debug\net7.0\Sudoku.AssemblyInfoInputs.cache
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\obj\Debug\net7.0\Sudoku.AssemblyInfo.fs
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\obj\Debug\net7.0\Sudoku.fsproj.CoreCompileInputs.cache
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\obj\Debug\net7.0\Sudoku.fsproj.CopyComplete
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\obj\Debug\net7.0\Sudoku.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\obj\Debug\net7.0\refint\Sudoku.dll
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\obj\Debug\net7.0\Sudoku.pdb
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\obj\Debug\net7.0\Sudoku.genruntimeconfig.cache
+C:\Users\Carla\Desktop\web\paco\Sudoku\Engine\obj\Debug\net7.0\ref\Sudoku.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\Sudoku.exe
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\Sudoku.deps.json
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\Sudoku.runtimeconfig.json
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\Sudoku.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\Sudoku.pdb
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\FSharp.Core.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\cs\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\de\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\es\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\fr\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\it\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\ja\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\ko\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\pl\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\pt-BR\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\ru\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\tr\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\zh-Hans\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\bin\Debug\net7.0\zh-Hant\FSharp.Core.resources.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\obj\Debug\net7.0\Sudoku.fsproj.AssemblyReference.cache
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\obj\Debug\net7.0\Sudoku.AssemblyInfoInputs.cache
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\obj\Debug\net7.0\Sudoku.AssemblyInfo.fs
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\obj\Debug\net7.0\Sudoku.fsproj.CoreCompileInputs.cache
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\obj\Debug\net7.0\Sudoku.sourcelink.json
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\obj\Debug\net7.0\Sudoku.fsproj.CopyComplete
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\obj\Debug\net7.0\Sudoku.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\obj\Debug\net7.0\refint\Sudoku.dll
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\obj\Debug\net7.0\Sudoku.pdb
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\obj\Debug\net7.0\Sudoku.genruntimeconfig.cache
+D:\Cibernetica 2021\3ero\Declarativa\final\Sudoku\Engine\obj\Debug\net7.0\ref\Sudoku.dll

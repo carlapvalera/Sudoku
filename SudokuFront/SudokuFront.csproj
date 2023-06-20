@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
-    <ProjectReference Include="..\Engine\backendSudo.fsproj" />
+    <ProjectReference Include="..\Engine\Sudoku.fsproj" />
   </ItemGroup>
 
   <PropertyGroup>
