@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Create.fs" />
     <Compile Include="Function.fs" />
     <Compile Include="Func.fs" />
     <Compile Include="Sudo.fs" />
